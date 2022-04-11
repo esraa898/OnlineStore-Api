@@ -27,7 +27,7 @@ class AuthRepository implements AuthInterface
             'email'=> $request->email,
             'password' => Hash::make($request->password)
         ]);
-        return $this->apiResponce(200,'Account was Created ');
+        return $this->apiResponce(200,'Account was Created');
         
     }
 
@@ -44,8 +44,9 @@ class AuthRepository implements AuthInterface
         }
         $userdata= $request->only('email','password');
         if($token=Auth::attempt($userdata)){
-            return $this->respondWithToken($token);
             return $this->apiResponce(200,'login');
+            return $this->respondWithToken($token);
+            
         }
         return $this->apiResponce(400,'Not found ');
     }
@@ -55,6 +56,6 @@ class AuthRepository implements AuthInterface
             'access_token' => $token,
          
         ];
-        return $this->apiResponce(200,'login',$array);
+        return $this->apiResponce(200,'login',null,$array);
     }
 }

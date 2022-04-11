@@ -35,5 +35,4 @@ Route::group(['prefix'=>'cart','middleware'=>'jwtAuth'],function(){
     });
 
    
-
-    Route::post('/checkout',[OrderController::class,'checkOut']);
+  Route::post('/checkout',[OrderController::class,'checkOut']);
