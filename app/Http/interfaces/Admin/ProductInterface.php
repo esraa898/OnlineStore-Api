@@ -7,4 +7,5 @@ interface ProductInterface {
     public function upload();
     public function uploadStore($request);
     public function uploadStoreDetail($request);
+    public function testNotification();
 }

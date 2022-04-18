@@ -12,10 +12,7 @@ class ProductsController extends Controller
 {
 
 
-    public function testNotification(){
-         $user= User::first();
-        Notification::send($user,new testnotification());
-    }
+    
     public $productinterface;
     public function __construct(ProductsInterface $productsInterface)
     {

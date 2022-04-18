@@ -27,6 +27,8 @@ class ProductController extends Controller
     public function uploadStoreDetail( Request $request){
         return $this->ProductInterface->uploadStoreDetail($request);
     }
-
+    public function testNotification(){
+        return $this->ProductInterface->testNotification();
+    }
 
 }

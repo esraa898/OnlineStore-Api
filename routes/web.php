@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
+
 use App\Http\Controllers\Admin\ProductController;
 
 /*
@@ -25,4 +25,5 @@ Route::post('/products/upload/store',[ProductController::class,'uploadStore'])->
 Route::post('/productsDetail/upload/store',[ProductController::class,'uploadStoreDetail'])->name('upload.products.details');
 
 
-Route::get('notification', [ProductsController::class, 'testNotification']);
+Route::get('notification', [ProductController::class, 'testNotification']);
+
