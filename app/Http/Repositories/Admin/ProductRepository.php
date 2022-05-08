@@ -19,35 +19,35 @@ class ProductRepository implements ProductInterface{
 
 $color= request('color');
 $discount= request('discount');
-         $products= product::withCount('details')->get();
-    //     $query= Product::where('stock','>=',1);
-    //     $query->when(request('color'),function() use($color,$query)
-    //     {
+        //  $products= product::withCount('details')->get();
+        $query= Product::where('stock','>=',1);
+        $query->when(request('color'),function() use($color,$query)
+        {
 
-    //       $query->whereHas('details',function($q) use($color)
-    //       {
-    //         return $q->where('color',$color);
-    //     });  
-    //     });
+          $query->whereHas('details',function($q) use($color)
+          {
+            return $q->where('color',$color);
+        });  
+        });
 
-    //     $query->when(request('discount'),function() use($discount,$query)
-    //     {
+        $query->when(request('discount'),function() use($discount,$query)
+        {
 
-    //         $query->whereHas('details',function($qu) use($discount)
-    //         {
-    //             if($discount == "yes"){
-    //                    return $qu->where('discount','>',0);
-    //             }else{
-    //                 return $qu;
-    //             }
+            $query->whereHas('details',function($qu) use($discount)
+            {
+                if($discount == "yes"){
+                       return $qu->where('discount','>',0);
+                }else{
+                    return $qu;
+                }
              
 
-    //         });
+            });
 
-    //     });
+        });
         
        
-    //    $products = $query->get();
+       $products = $query->get();
         return view('product',compact('products'));
     }
 
@@ -65,7 +65,7 @@ $discount= request('discount');
         return redirect()->back();
     }
     public function testNotification(){
-   Mail::to('essomohamed121@gmail.com')->send(new TestEmail);
+      Mail::to('essomohamed121@gmail.com')->send(new TestEmail);
         $user =User::first();
     // dd($user->notifications);
     // dd($user->unreadnotifications->markAsRead( ));
